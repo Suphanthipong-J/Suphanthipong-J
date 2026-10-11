@@ -6,7 +6,7 @@ trusted.
 
 ### Featured work
 
-**A5-SSL: charge-only SOH estimation with a label-free reliability screen**
+**Charge-only battery SOH estimation with label-free reliability screening**
 
 - Conv1D–BiLSTM network pretrained on the order of a cell's charges without labels, then fine-tuned on SOH
 - Two label-free screens that withhold the estimate for cells the model is likely to get wrong
