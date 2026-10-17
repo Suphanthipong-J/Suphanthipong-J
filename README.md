@@ -6,13 +6,17 @@ trusted.
 
 ### Featured work
 
-**Charge-only battery SOH estimation with label-free reliability screening**
+**Charge-only SOH estimation of lithium-ion cells: failure analysis and label-free reliability screening**
 
-- Conv1D–BiLSTM network pretrained on the order of a cell's charges without labels, then fine-tuned on SOH
-- Two label-free screens that withhold the estimate for cells the model is likely to get wrong
-- Evaluated by leave-one-battery-out on 23 NASA and NCA-18650 cells (median R² 0.87), and without retraining on the
-  Oxford and CALCE datasets, where it follows each cell's degradation but with a systematic offset (mean R² 0.51 and
-  0.65)
+- Conv1D–BiLSTM estimator that uses only constant-current charge data, evaluated by leave-one-battery-out on 23 NASA
+  and NCA-18650 cells (median R² 0.87; 7 of 23 cells below R² 0.5)
+- An analysis of the cells on which it fails: noisy SOH trajectories, features that track SOH weakly, and in one
+  cell the voltage at which charges start
+- A label-free score from a network pretrained on the order of a cell's charges that ranks failing cells below
+  working ones (AUC 0.96–0.99 over three pretraining seeds); the cells it flags change with the seed, so it is
+  preliminary evidence, not a validated detector
+- Exploratory tests without retraining on the Oxford and CALCE datasets: the degradation trend is followed but its
+  rate is under-estimated
 - Runs with ONNX Runtime on an NVIDIA Jetson Orin Nano (about 1.4 ms per estimate for the five-model ensemble)
 
 The code will be made public after publication.
